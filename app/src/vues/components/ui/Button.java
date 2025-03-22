@@ -38,4 +38,24 @@ public class Button extends JButton {
         this.setVisible(true);
     }
 
+    public Button(String text, Color color) {
+        this.setText(text);
+        this.setPreferredSize(new Dimension(300, 40));
+        this.setFocusable(false);
+        //REMOVE THE DEFAULT PAINTING
+        this.setBorderPainted(false);
+        //BACKGROUND COLOR
+        this.setBackground(color);
+        //TEXT COLOR
+        this.setForeground(Color.WHITE);
+
+        //MAKE THE CURSOR POINTER
+        this.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
+
+
+
+        this.setOpaque(true);
+        this.setVisible(true);
+    }
+
 }

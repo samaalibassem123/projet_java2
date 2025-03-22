@@ -1,0 +1,18 @@
+package vues.components.Containers.Dashboard;
+
+import vues.components.ui.Button;
+
+import javax.swing.*;
+import java.awt.*;
+
+public class ButtonsContainer extends JPanel {
+    public ButtonsContainer(Button b1,Button b2,Button b3,Button b4) {
+        this.setLayout(new GridLayout(2,2, 50,50));
+        this.add(b1);
+        this.add(b2);
+        this.add(b3);
+        this.add(b4);
+        this.setOpaque(true);
+        this.setVisible(true);
+    }
+}

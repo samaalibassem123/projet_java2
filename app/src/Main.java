@@ -1,3 +1,4 @@
+import vues.windows.HomePage;
 import vues.windows.LoginPage;
 import vues.windows.RegisterPage;
 
@@ -5,6 +6,6 @@ import vues.windows.RegisterPage;
 // click the <icon src="AllIcons.Actions.Execute"/> icon in the gutter.
 public class Main {
     public static void main(String[] args) {
-        new LoginPage();
+        new HomePage();
     }
 }
