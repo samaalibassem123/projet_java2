@@ -1,4 +1,4 @@
-package vues.components;
+package vues.components.ui;
 
 import javax.swing.*;
 

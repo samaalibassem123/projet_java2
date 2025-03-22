@@ -1,14 +1,16 @@
 package vues.windows;
 
-import models.User;
-import vues.components.*;
-import vues.components.Button;
-import vues.components.Label;
+import vues.components.Containers.InputContainer;
+import vues.components.ui.*;
+import vues.components.ui.Button;
+import vues.components.ui.Label;
 
 import javax.swing.*;
 import java.awt.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 
-public class LoginPage extends JFrame {
+public class LoginPage extends JFrame implements ActionListener {
     private Button Login;
 
 
@@ -29,8 +31,7 @@ public class LoginPage extends JFrame {
         this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         this.setLayout(new FlowLayout(FlowLayout.CENTER, 0,40));
         this.setSize(350,500);
-        //LINK
-        RegisterLink = new Link("Sign Up Here !");
+
         //LEGEND
         legend = new Legend("Login");
 
@@ -44,6 +45,10 @@ public class LoginPage extends JFrame {
 
         //BUTTONS
         Login = new Button("Login");
+        Login.addActionListener(this);
+        //LINK
+        RegisterLink = new Link("Sign Up Here !");
+        RegisterLink.addActionListener(this);
 
         // CONTAINERS
         InputContainer UsernameContainer = new InputContainer(username, Input_Username);
@@ -61,5 +66,13 @@ public class LoginPage extends JFrame {
         this.add(RegisterLink);
 
         this.setVisible(true);
+    }
+
+    @Override
+    public void actionPerformed(ActionEvent e) {
+        if (e.getSource() == RegisterLink){
+            this.dispose(); //CLOSE THE CUURENT WINDOW
+            new RegisterPage();
+        }
     }
 }

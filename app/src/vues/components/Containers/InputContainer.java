@@ -1,4 +1,4 @@
-package vues.components;
+package vues.components.Containers;
 
 import javax.swing.*;
 import java.awt.*;
