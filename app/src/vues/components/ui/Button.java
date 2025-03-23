@@ -7,7 +7,7 @@ import java.awt.event.MouseEvent;
 
 public class Button extends JButton {
     public Button(String text) {
-        this.setText(text);
+        this.setText(text) ;
         this.setPreferredSize(new Dimension(300, 40));
         this.setFocusable(false);
         //REMOVE THE DEFAULT PAINTING

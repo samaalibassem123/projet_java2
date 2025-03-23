@@ -8,9 +8,12 @@ import vues.components.Containers.InputContainer;
 import vues.components.ui.Input;
 import vues.components.ui.Button;
 import vues.components.ui.Label;
+import vues.components.ui.Table;
+
 import javax.swing.*;
 import javax.swing.border.Border;
 import javax.swing.table.DefaultTableModel;
+import javax.swing.text.TabableView;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -19,10 +22,11 @@ public class HomePage extends JFrame implements ActionListener {
     private Label id, prenom, nom;
     private Button add, find, delete, update;
     private Input Iid ,Iprenom ,Inom;
+    private Table table;
     public HomePage() {
         this.setTitle("Home");
         this.setDefaultCloseOperation(EXIT_ON_CLOSE);
-        this.setLayout(new FlowLayout(FlowLayout.LEADING, 20,20));
+        this.setLayout(new BorderLayout());
 
 
         //1. COMPONENTS
@@ -43,6 +47,15 @@ public class HomePage extends JFrame implements ActionListener {
         Iid = new Input();
         Inom = new Input();
         Iprenom = new Input();
+        //1.3 table
+
+        // Data for the table
+        Object[][] data = {
+                {1, "John Doe", 25},
+                {2, "Jane Smith", 30},
+                {3, "Bob Johnson", 40}
+        };
+        table = new Table(data);
 
         //CONTAINERS
         InputContainer ID = new InputContainer(id, Iid);
@@ -50,15 +63,15 @@ public class HomePage extends JFrame implements ActionListener {
         InputContainer PRENOM = new InputContainer(prenom, Iprenom);
 
         InputsContainer inputs = new InputsContainer(ID, NOM, PRENOM);
-        ButtonsContainer buttons = new ButtonsContainer(add, delete, find, update);
+        ButtonsContainer buttons = new ButtonsContainer(add, delete, update , find);
 
         LeftContainer leftSide = new LeftContainer(inputs, buttons);
-        RightContainer rightSide = new RightContainer();
+        RightContainer rightSide = new RightContainer(table);
 
 
         //2. ADD CONTAINERS
-        this.add(rightSide);
-        this.add(leftSide);
+        this.add(leftSide, BorderLayout.WEST);
+        this.add(rightSide, BorderLayout.EAST);
 
 
         this.pack();
