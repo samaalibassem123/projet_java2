@@ -10,7 +10,7 @@ public class Connexion {
     private final static String url = "jdbc:mysql://localhost:3306/projetjava";
     private final static String username = "root";
     private final static String password = "bassem1234";
-    public  Connection connexion(){
+    public static Connection getConnexion(){
         try {
             Connection connection = DriverManager.getConnection(url, username, password);
             System.out.println("Connected Succesfully!");
