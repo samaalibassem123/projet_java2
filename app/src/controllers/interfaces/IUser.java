@@ -3,6 +3,6 @@ package controllers.interfaces;
 import models.User;
 
 public interface IUser {
-    void  RegisterUser(User user);
-    void  LoginUser(User user);
+    static void  RegisterUser(User user){};
+    static void  LoginUser(User user){};
 }

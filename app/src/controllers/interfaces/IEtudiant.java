@@ -3,8 +3,8 @@ package controllers.interfaces;
 import models.Etudiant;
 
 public interface IEtudiant {
-    static void AddStudent(Etudiant e);
-    void FindStudent(Etudiant e);
-    void UpdateStudent(Etudiant e);
-    void DeleteStudent(Etudiant e);
+    static void AddStudent(Etudiant e){};
+    static void FindStudent(Etudiant e){};
+    static void UpdateStudent(Etudiant e){};
+    static void DeleteStudent(Etudiant e){};
 }

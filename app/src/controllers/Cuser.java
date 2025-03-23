@@ -9,17 +9,14 @@ import java.sql.Connection;
 public class  Cuser implements IUser {
 
 
-    @Override
-    public void RegisterUser(User user) {
+
+    static public void RegisterUser(User user) {
        Connection conn = Connexion.getConnexion();
-
-
+       
     }
 
-    @Override
-    public void LoginUser(User user) {
+
+    static public void LoginUser(User user) {
        Connection conn = Connexion.getConnexion();
-
-
     }
 }

@@ -7,27 +7,26 @@ import models.Etudiant;
 import java.sql.Connection;
 
 public class CEtudiant implements IEtudiant {
-    @Override
-    public void AddStudent(Etudiant e) {
+
+    static public void AddStudent(Etudiant e) {
         Connection conn = Connexion.getConnexion();
     }
 
-    @Override
-    public void FindStudent(Etudiant e) {
+
+    static public void FindStudent(Etudiant e) {
         Connection conn = Connexion.getConnexion();
     }
 
-    @Override
-    public void UpdateStudent(Etudiant e) {
+
+    static public void UpdateStudent(Etudiant e) {
         Connection conn = Connexion.getConnexion();
 
 
     }
 
-    @Override
-    public void DeleteStudent(Etudiant e) {
-        Connection conn = Connexion.getConnexion();
 
+    static public void DeleteStudent(Etudiant e) {
+        Connection conn = Connexion.getConnexion();
 
     }
 }
