@@ -24,7 +24,7 @@ public class  Cuser  {
                JOptionPane.showMessageDialog(null, "Created Succesfully !", "Register validation", JOptionPane.PLAIN_MESSAGE);
                return true;
            }catch (SQLException e){
-               SQLErrors.Show(e.getMessage());
+               SQLErrors.Show("Username Existe Deja");
                return false;
            }
        }
@@ -32,7 +32,27 @@ public class  Cuser  {
     }
 
 
-    /*static public Boolean LoginUser(User user) {
+    static public Boolean LoginUser(User user) {
        Connection conn = Connexion.getConnexion();
-    }*/
+       if (conn != null){
+           try {
+               String query = "Select * from user Where user_name=? and password=?";
+               PreparedStatement stm = conn.prepareStatement(query);
+               stm.setString(1, user.getUsername());
+               stm.setString(2, user.getPassword());
+               ResultSet res = stm.executeQuery();
+               res.next();
+               if (res.getRow() != 0){
+                   return true;
+               }else {
+                   SQLErrors.Show("Username Or password incorrect !");
+                   return false;
+               }
+           }catch (SQLException e){
+               SQLErrors.Show(e.getMessage());
+               return false;
+           }
+       }
+       return false;
+    }
 }
