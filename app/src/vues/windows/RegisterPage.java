@@ -78,7 +78,7 @@ public class RegisterPage extends JFrame implements ActionListener {
     @Override
     public void actionPerformed(ActionEvent e) {
         if (e.getSource() == LoginLink){
-            
+
             this.dispose(); //CLOSE THE CURRENT WINDOW
             new LoginPage();
 
@@ -89,7 +89,8 @@ public class RegisterPage extends JFrame implements ActionListener {
             String cpassword = Input_CPassword.getText();
 
             if(VerifRegister.Verif(name, password, cpassword)){
-                    User user = new User(password, name); //CREATE A NEW USER TO REGISTER
+
+                    User user = new User(name ,password); //CREATE A NEW USER TO REGISTER
                     Boolean ValdiRegister = Cuser.RegisterUser(user);//REGISTER THE USER RETURN TRUE OR FALSE
                     if (ValdiRegister){
                         this.dispose();
