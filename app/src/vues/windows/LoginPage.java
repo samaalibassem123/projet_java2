@@ -85,7 +85,7 @@ public class LoginPage extends JFrame implements ActionListener {
                     Boolean ValidLogin = Cuser.LoginUser(user);//REGISTER THE USER RETURN TRUE OR FALSE
                     if (ValidLogin){
                         this.dispose();
-                        new HomePage(); //REDIRECT THE USER TO THE THEIR HOME PAGE
+                        new HomePage(name); //REDIRECT THE USER TO THE THEIR HOME PAGE
                     }//ELSE STAY IN THE SAME PAGE
             }
         }

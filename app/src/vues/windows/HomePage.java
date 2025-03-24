@@ -1,5 +1,8 @@
 package vues.windows;
 
+import Errors.VerifHomeInputs;
+import controllers.CEtudiant;
+import models.Etudiant;
 import vues.components.Containers.Dashboard.ButtonsContainer;
 import vues.components.Containers.Dashboard.InputsContainer;
 import vues.components.Containers.Dashboard.LeftContainer;
@@ -13,6 +16,7 @@ import vues.components.ui.Table;
 import javax.swing.*;
 import javax.swing.border.Border;
 import javax.swing.table.DefaultTableModel;
+import javax.swing.text.InternationalFormatter;
 import javax.swing.text.TabableView;
 import java.awt.*;
 import java.awt.event.ActionEvent;
@@ -23,11 +27,13 @@ public class HomePage extends JFrame implements ActionListener {
     private Button add, find, delete, update;
     private Input Iid ,Iprenom ,Inom;
     private Table table;
-    public HomePage() {
+    private String username;
+    public HomePage(String username) {
+        this.username = username;
         this.setTitle("Home");
         this.setDefaultCloseOperation(EXIT_ON_CLOSE);
         this.setLayout(new BorderLayout());
-
+        this.setBackground(Color.black);
 
         //1. COMPONENTS
         //1.0 labels
@@ -80,6 +86,25 @@ public class HomePage extends JFrame implements ActionListener {
 
     @Override
     public void actionPerformed(ActionEvent e) {
+        String id = Iid.getText();
+        String nom = Inom.getText();
+        String prenom = Iprenom.getText();
+        boolean VerifInputes = VerifHomeInputs.Verif(id, nom, prenom);
+        if (VerifInputes){
+            if (e.getSource() == add){
+                Etudiant student = new Etudiant(Integer.parseInt(id), nom, prenom,username);
+                CEtudiant.AddStudent(student);
+            } else if (e.getSource() == delete){
+                Etudiant student = new Etudiant(Integer.parseInt(id), nom, prenom,username);
+                CEtudiant.DeleteStudent(student);
+            } else if (e.getSource() == update){
+                Etudiant student = new Etudiant(Integer.parseInt(id), nom, prenom,username);
+                CEtudiant.UpdateStudent(student);
+            }else if (e.getSource() == find){
+                Etudiant student = new Etudiant(Integer.parseInt(id), nom, prenom,username);
+                CEtudiant.FindStudent(student);
+            }
+        }
 
     }
 }

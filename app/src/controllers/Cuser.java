@@ -21,7 +21,7 @@ public class  Cuser  {
                stm.setString(1,user.getUsername());
                stm.setString(2,user.getPassword());
                stm.executeUpdate();
-               JOptionPane.showMessageDialog(null, "Created Succesfully !", "Register validation", JOptionPane.PLAIN_MESSAGE);
+               JOptionPane.showMessageDialog(null, "Created Succesfully !", "Register validation", JOptionPane.INFORMATION_MESSAGE);
                return true;
            }catch (SQLException e){
                SQLErrors.Show("Username Existe Deja");
