@@ -1,5 +1,8 @@
 package vues.windows;
 
+import Errors.VerifRegister;
+import controllers.Cuser;
+import models.User;
 import vues.components.Containers.InputContainer;
 import vues.components.ui.*;
 import vues.components.ui.Button;
@@ -9,6 +12,7 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.util.Objects;
 
 public class RegisterPage extends JFrame implements ActionListener {
     private Button Register;
@@ -74,8 +78,25 @@ public class RegisterPage extends JFrame implements ActionListener {
     @Override
     public void actionPerformed(ActionEvent e) {
         if (e.getSource() == LoginLink){
+            
             this.dispose(); //CLOSE THE CURRENT WINDOW
             new LoginPage();
+
+        } else if (e.getSource() == Register) {
+
+            String name = Input_Username.getText();
+            String password = Input_Password.getText();
+            String cpassword = Input_CPassword.getText();
+
+            if(VerifRegister.Verif(name, password, cpassword)){
+                    User user = new User(password, name); //CREATE A NEW USER TO REGISTER
+                    Boolean ValdiRegister = Cuser.RegisterUser(user);//REGISTER THE USER RETURN TRUE OR FALSE
+                    if (ValdiRegister){
+                        this.dispose();
+                        new LoginPage(); //REDIRECT THE USER TO THE LOGIN PAGE IF REGISTRATION IS VALID
+                    }//ELSE STAY IN THE SAME PAGE
+            }
+
         }
     }
 }

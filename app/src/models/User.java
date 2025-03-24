@@ -1,13 +1,13 @@
 package models;
 
 public class User {
-    private int userId;
+    private static int userId;
     private String username;
     private String password;
 
-    public User(String password, int userId, String username) {
+    public User(String password, String username) {
         this.password = password;
-        this.userId = userId;
+        userId++;
         this.username = username;
     }
 
@@ -19,9 +19,7 @@ public class User {
         return userId;
     }
 
-    public void setUserId(int userId) {
-        this.userId = userId;
-    }
+
 
     public void setPassword(String password) {
         this.password = password;
