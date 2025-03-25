@@ -21,10 +21,12 @@ import javax.swing.text.TabableView;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.image.AreaAveragingScaleFilter;
+import java.util.ArrayList;
 
 public class HomePage extends JFrame implements ActionListener {
     private Label id, prenom, nom;
-    private Button add, find, delete, update;
+    private Button add, delete, update;
     private Input Iid ,Iprenom ,Inom;
     private Table table;
     private String username;
@@ -42,11 +44,10 @@ public class HomePage extends JFrame implements ActionListener {
         prenom = new Label("Family name : ");
         //1.1 buttons
         add = new Button("Add");
-        find = new Button("Find", new Color(5, 145, 252));
         delete = new Button("Delete", new Color(252, 97, 132));
         update = new Button("Update", new Color(5, 252, 126));
+
         add.addActionListener(this);
-        find.addActionListener(this);
         delete.addActionListener(this);
         update.addActionListener(this);
         //1.2 inputs
@@ -56,11 +57,8 @@ public class HomePage extends JFrame implements ActionListener {
         //1.3 table
 
         // Data for the table
-        Object[][] data = {
-                {1, "John Doe", 25},
-                {2, "Jane Smith", 30},
-                {3, "Bob Johnson", 40}
-        };
+        ArrayList<Etudiant> data = CEtudiant.getStudents(username);
+
         table = new Table(data);
 
         //CONTAINERS
@@ -69,7 +67,7 @@ public class HomePage extends JFrame implements ActionListener {
         InputContainer PRENOM = new InputContainer(prenom, Iprenom);
 
         InputsContainer inputs = new InputsContainer(ID, NOM, PRENOM);
-        ButtonsContainer buttons = new ButtonsContainer(add, delete, update , find);
+        ButtonsContainer buttons = new ButtonsContainer(add, delete, update);
 
         LeftContainer leftSide = new LeftContainer(inputs, buttons);
         RightContainer rightSide = new RightContainer(table);
@@ -100,10 +98,10 @@ public class HomePage extends JFrame implements ActionListener {
             } else if (e.getSource() == update){
                 Etudiant student = new Etudiant(Integer.parseInt(id), nom, prenom,username);
                 CEtudiant.UpdateStudent(student);
-            }else if (e.getSource() == find){
-                Etudiant student = new Etudiant(Integer.parseInt(id), nom, prenom,username);
-                CEtudiant.FindStudent(student);
             }
+            //Refresh the Home page
+            this.dispose();
+            new HomePage(username);
         }
 
     }

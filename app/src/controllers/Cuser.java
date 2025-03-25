@@ -8,9 +8,7 @@ import models.User;
 import javax.swing.*;
 import java.sql.*;
 
-public class  Cuser  {
-
-
+public class  Cuser{
 
     static public Boolean RegisterUser(User user) {
        Connection conn = Connexion.getConnexion();
